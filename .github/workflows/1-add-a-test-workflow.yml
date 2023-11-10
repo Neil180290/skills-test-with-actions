@@ -10,14 +10,18 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     outputs:
-      output-variable: "conditional-value"
+      output-variable: ${{ steps.set-output-variable.outputs.output-val }}
 
     steps:
       - name: Set Output Variable
-        run: echo "Setting output-variable=conditional-value"
+        id: set-output-variable
+        run: |
+          echo "::set-output name=output-val::conditinal-value"
 
       - name: Debug Output Variable
-        run: echo "Output variable value:${{ needs.job-1.outputs.output-vars }}"
+        run: |
+          echo "Value from step:${{ steps.set-output-variable.outputs.output-val }}"
+          echo "Value from Output:${{ needs.job-1.outputs.output-vars }}"
 
   job-2:
     needs: job-1
