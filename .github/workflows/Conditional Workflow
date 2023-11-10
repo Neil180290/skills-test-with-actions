@@ -1,0 +1,36 @@
+name: Conditional Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    outputs:
+      id: output-vars
+      set: |
+        echo "output-variable=conditional-value" >> $GITHUB_ENV
+
+    steps:
+      - name: Set Output Variable
+        run: echo "Setting output-variable=conditional-value"
+
+  job-2:
+    needs: job-1
+    runs-on: ubuntu-latest
+    if: ${{ needs.job-1.outputs.output-vars == 'conditional-value' }}
+
+    steps:
+      - name: Conditional Step
+        run: echo "Running Job 2 because the condition is met"
+
+  job-3:
+    needs: job-2
+    runs-on: ubuntu-latest
+    if: success() || cancelled()
+
+    steps:
+      - name: Job 3
+        run: echo "Running Job 3"
