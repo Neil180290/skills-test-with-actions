@@ -33,12 +33,6 @@ jobs:
         run: |
           echo "Value from step: ${{ steps.set-output-variable.outputs.temp2 }}"
           echo "Value from Output: ${{ needs.job-1.outputs.temp2 }}"
-
-      - name: Debug Output Variable Again
-        run: |
-          echo "Value from step: ${{ steps.set-output-variable.outputs.temp2 }}"
-          echo "Value from Output: ${{ needs.job-1.outputs.temp2 }}"
-          echo "Condition met: ${{ needs.job-1.outputs.temp2 == 'conditional-value' }}"
       
       - name: Conditional Step
         run: echo "Running Job 2 because the condition is met"
