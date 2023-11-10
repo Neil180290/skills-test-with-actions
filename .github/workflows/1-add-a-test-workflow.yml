@@ -21,12 +21,12 @@ jobs:
       - name: Debug Output Variable
         run: |
           echo "Value from step:${{ steps.set-output-variable.outputs.output-val }}"
-          echo "Value from Output:${{ needs.job-1.outputs.output-vars }}"
+          echo "Value from Output:${{ needs.job-1.outputs.output-variable }}"
 
   job-2:
     needs: job-1
     runs-on: ubuntu-latest
-    if: ${{ needs.job-1.outputs.output-vars == 'conditional-value' }}
+    if: ${{ needs.job-1.outputs.output-variable == 'conditional-value' }}
 
     steps:
       - name: Conditional Step
