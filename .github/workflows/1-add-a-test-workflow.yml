@@ -56,6 +56,6 @@ jobs:
     steps:
       - name: Print Job Status
         run: |
-          echo "Job 1 Status: ${{ github.event.workflow_run.jobs.job-1.conclusion }}"
-          echo "Job 2 Status: ${{ github.event.workflow_run.jobs.job-2.conclusion }}"
-          echo "Job 3 Status: ${{ github.event.workflow_run.jobs.job-3.conclusion }}"  
+          echo "Job 1 Status: ${{ needs.job-1.result }}"
+          echo "Job 2 Status: ${{ needs.job-2.result }}"
+          echo "Job 3 Status: ${{ needs.job-3.result }}" 
