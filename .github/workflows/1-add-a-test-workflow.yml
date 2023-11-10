@@ -40,7 +40,7 @@ jobs:
   job-3:
     needs: job-2
     runs-on: ubuntu-latest
-    if: ${{ needs.job-2.result == 'skipped' }}
+    if: ${{ needs.job-2.result == 'success' }}
 
     steps:
       - name: Job 3
