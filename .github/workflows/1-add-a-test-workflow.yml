@@ -10,9 +10,7 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     outputs:
-      id: output-vars
-      set: |
-        echo "output-variable=conditional-value" >> $GITHUB_ENV
+      output-variable: "conditional-value"
 
     steps:
       - name: Set Output Variable
