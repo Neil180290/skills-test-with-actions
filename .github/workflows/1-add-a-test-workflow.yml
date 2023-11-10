@@ -40,7 +40,7 @@ jobs:
   job-3:
     needs: job-2
     runs-on: ubuntu-latest
-    if: success() || cancelled()
+    if: success() || cancelled() || skipped()
 
     steps:
       - name: Job 3
