@@ -18,6 +18,9 @@ jobs:
       - name: Set Output Variable
         run: echo "Setting output-variable=conditional-value"
 
+      - name: Debug Output Variable
+        run: echo "Output variable value:${{ needs.job-1.outputs.output-vars }}"
+
   job-2:
     needs: job-1
     runs-on: ubuntu-latest
