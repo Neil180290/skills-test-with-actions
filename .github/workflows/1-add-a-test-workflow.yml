@@ -26,7 +26,7 @@ jobs:
   job-2:
     needs: job-1
     runs-on: ubuntu-latest
-    if: ${{ needs.job-1.outputs.temp2 == 'conditional-value2' }}
+    if: ${{ needs.job-1.outputs.temp2 == 'conditional-value' }}
 
     steps:
       - name: Debug Output Variable Again
