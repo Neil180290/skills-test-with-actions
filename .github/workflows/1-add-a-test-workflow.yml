@@ -51,3 +51,17 @@ jobs:
     steps:
       - name: Job 3
         run: echo "Running Job 3"
+
+  print-status:
+    needs: 
+      - job-1
+      - job-2
+      - job-3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Job Status
+        run: |
+          echo "Job 1 Status: ${{ github.event.workflow_run.jobs.job-1.conclusion }}"
+          echo "Job 2 Status: ${{ github.event.workflow_run.jobs.job-2.conclusion }}"
+          echo "Job 3 Status: ${{ github.event.workflow_run.jobs.job-3.conclusion }}"  
